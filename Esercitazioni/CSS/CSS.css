@@ -1,0 +1,46 @@
+/*Esercitazione 1 CSS*/
+/*Task 2*/
+body{
+	font-size: 14px;
+	font-family: Open Sans, Arial, sans serif;
+	color: black;
+}
+
+/*Task 3*/
+#header, #footer{
+	color: white;
+}
+#logo{
+	background: #1c345a;
+}
+
+/*Task 4*/
+.current_page_item{
+	font-weight: bold;
+}
+
+/*Task 5*/
+div#content h2{
+	color: #9e1616;
+}
+
+/*Task 6*/
+
+h1, h2, h3, h4, h5, h6{
+	color: #1c345a;
+}
+
+/*Task 7*/
+a:link, a:visited{
+	color: #9e1616;
+}
+
+a:hover{
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+/*Task 8*/
+a[href="studente_esami.html"]:link{
+	color: #1c345a;
+}

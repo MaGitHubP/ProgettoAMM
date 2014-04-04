@@ -1,0 +1,74 @@
+/*Esercitazione 2 CSS*/
+
+h1#titolo{
+	color:blue;
+}
+/*Task 1 e 2*/
+div#logo h1{
+	background-image: url('logo.jpg');
+	background-repeat: no-repeat;
+	background-position: center-left;
+	height: 100px;
+	margin: 0px;
+	border: 10px;
+	border-style: groove;
+	padding-left: 100px;
+}
+
+/*Task 3*/
+div#blocco_header{
+	border-top: 5px solid black;
+   	border-bottom: 5px solid black;
+    	border-left: 7px solid black;
+    	border-right: 7px solid black;
+    	margin: 10px;
+    	padding: 20px;
+    	background-color: red;
+    	width: 250px;
+    	height: 150px;
+
+	/*risultato:190x294*/
+}
+
+/*Task 4*/
+#task4{
+	position:relative;
+	border:5px groove black;
+	height:550px;
+	width:550px;
+}
+
+.blocco1{
+	position:absolute;
+	background-color:blue;
+	height:100px;
+	width:500px;
+	margin:10px;
+}
+.blocco2{
+	position:absolute;
+	background-color:yellow;
+	height:300px;
+	width:450px;
+	margin-top:125px;
+	margin-left:30px;
+}
+.blocco3{
+	position:absolute;
+	background-color:black;
+	height:100px;
+	width:225px;
+	margin-top:440px;
+	margin-left:30px;
+	margin-bottom:10px;
+}
+
+.blocco4{
+	position:absolute;
+	background-color:green;
+	height:100px;
+	width:225px;
+	margin-top:440px;
+	margin-left:255px;
+	margin-bottom:10px;
+}

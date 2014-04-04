@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>EsAMMi - gestione studente -</title>
+        <meta name="keywords" content="AMM esami studente" />
+        <meta name="description" content="Una pagina per gestire le funzioni degli studenti" />
+        <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico" />
+        <link href="CSS_2.css" rel="stylesheet" type="text/css" media="screen" />
+
+    </head>
+    <body>
+	<h1 id="titolo">Esercizi CSS<h1>
+	<!--Header-->
+	<!--Task 3-->
+	<header>
+		<div id="blocco_header">
+			<h1>Task 3</h1>
+		</div>
+	</header>
+	<!--Article-->
+	<hr/>
+	<!--Task 4-->
+	<h1>Task 4</h1>
+	<div id="task4">
+		<div class="blocco1">
+		
+		</div>
+
+		<div class="blocco2">
+		
+		</div>
+
+		<div class="blocco3">
+		
+		</div>
+
+		<div class="blocco4">
+		
+		</div>
+
+
+	</div>
+
+	<hr/>
+
+    </body>
+</html>
+
