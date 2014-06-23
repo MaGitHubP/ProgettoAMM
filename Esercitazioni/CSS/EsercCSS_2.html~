@@ -11,15 +11,18 @@
 
     </head>
     <body>
-	<h1 id="titolo">Esercizi CSS<h1>
-	<!--Header-->
-	<!--Task 3-->
+	<!--Task 2-->
 	<header>
-		<div id="blocco_header">
-			<h1>Task 3</h1>
+		<div id="logo">
+			<h1 id="titolo">Esercizi CSS<h1>
 		</div>
 	</header>
-	<!--Article-->
+	<!--Task 3
+	<h1>Task 3</h1>
+	<div id="blocco1">
+
+	</div>
+	-->
 	<hr/>
 	<!--Task 4-->
 	<h1>Task 4</h1>
@@ -44,6 +47,16 @@
 	</div>
 
 	<hr/>
+	<!--Task 5-->
+	<h1>Task 4</h1>
+	<div id="menu">
+		<ul>
+			<li>Home</li>
+			<li>Anagrafica</li>
+			<li>Libretto</li>
+			<li>Iscrizione</li>
+		</ul>
+	</div>
 
     </body>
 </html>

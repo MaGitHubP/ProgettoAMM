@@ -1,0 +1,132 @@
+<!DOCTYPE html >
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Esercizi PHP</title>
+        <link href="CSS_2.css" rel="stylesheet" type="text/css" media="screen" />
+
+    </head>
+
+	<body>
+		<h1>Task 2</h1>
+		<?php
+			$mesecorrente="Marzo";
+			//$mesecorrente="Aprile";
+			if($mesecorrente==Marzo){
+				echo "Siamo a MARZO!";
+			}else{
+				echo "Non siamo a Marzo.";
+			}
+
+			$mese="Giugno";
+
+			switch($mese){
+				case "Gennaio":
+					echo "January";
+				break;
+				case "Febbraio":
+					echo "February";
+				break;
+				case "Marzo":
+					echo "March";
+				break;
+				case "Aprile":
+					echo "April";
+				break;
+				case "Maggio":
+					echo "May";
+				break;
+				case "Giugno":
+					echo "June";
+				break;
+				case "Luglio":
+					echo "July";
+				break;
+				case "Agosto":
+					echo "August";
+				break;
+				case "Settembre":
+					echo "September";
+				break;
+				case "Ottobre":
+					echo "October";
+				break;
+				case "Novembre":
+					echo "November";
+				break;
+				case "Dicembre":
+					echo "December";
+				break;
+				default:
+					echo "Metti un mese.";
+				break;
+			}
+
+			if(isset($mese)){
+				print("Questa variabile è definita!");
+			}else{
+				print("Questa variabile non è definita.");
+			}
+			if(isset($boh)){
+				print("Questa variabile è definita!");
+			}else{
+				print("Questa variabile non è definita.");
+			}
+
+			$count=0;
+			for($i=0; $i<101; $i++){
+				$count+=$i;
+			}
+			echo "Somma dei primi 100 numeri interi: $count";
+
+			$count2=3;
+			while($count2<100){
+				$count2*=3;
+				echo $count2;
+			}
+		?>
+
+		<h1>Task 3</h1>
+		<?php
+			$nani=array("1° nano", 2° nano", 3° nano", 4° nano", 5° nano", 6° nano", 7° nano");
+			$nani[]="8° nano";
+			array_splice($nani, 5, 1);
+			echo "Elenco nani(con l'ottavo e senza il quinto):<ul>";
+			foreach($nani as $nano){
+				echo "<li>$nano</li>"
+			}
+			echo "</ul>"
+
+			$provincie=array("CA"=>"Cagliari", "SA"=>"Sassari", "NU"=>"Nuoro", "OR"=>"Oristano");
+			echo var_dump($provincie);
+			
+		?>
+
+		<h1>Task 4</h1>
+
+		<?php
+			function potenza($numero, $esponente){
+				$numero_esp=$numero;
+				for($i=0;$i<$esponente;$i++){
+					$numero*=$numero_esp;
+				}
+				return $numero;
+			}
+
+			$risultato=potenza(5, 3);
+			echo "Il risultato di 5 elevato 3 è:$risultato";
+
+			function swap(&$a, &$b){
+				$temp=$a;
+				$a=$b;
+				$b=$temp;
+			}
+
+			$a="aaa";
+			$b="bbb";
+			swap($a, $b);
+			echo "a:$a, b:$b";
+		?>
+	</body>
+</html>

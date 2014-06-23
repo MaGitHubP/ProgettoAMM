@@ -1,0 +1,60 @@
+div#logo h1#titolo{
+background-image: url('logo.jpg');
+background-repeat: no-repeat;
+background-position: center-left;
+padding-left:92px;
+padding-bottom:98px;
+}
+
+div#task4{
+	padding-left:150px;
+	position: static;
+	height:550px;
+	width:550px;
+}
+
+div.blocco1{
+	background-color: red;
+	height: 100px;
+	width: 550px;
+	position: absolute;
+}
+div.blocco2{
+	background-color: blue;
+	height:300px;
+	width:500px;
+	position: absolute;
+	margin-top:125px;
+	margin-left:25px;
+}
+div.blocco3{
+	background-color: green;
+	height: 100px;
+	width: 250px;
+	position: absolute;
+	margin-top:450px;
+	margin-left:25px;
+}
+div.blocco4{
+	background-color: yellow;
+	height:100px;
+	width:250px;
+	position: absolute;
+	margin-top:450px;
+	margin-left:275px;
+}
+
+div#menu ul{
+	border-bottom-style: solid;
+	border-bottom-color: red;
+	padding-bottom: 0px;
+}
+
+div#menu li{
+	display: inline-block;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+	margin: 0px;
+	position: relative;
+}
