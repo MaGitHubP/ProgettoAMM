@@ -1,0 +1,4 @@
+<form method="post" action="logout">
+    <?php unset($_REQUEST["page"]); ?>
+    <input type="submit" name="logout" value="Log out"/>
+</form>

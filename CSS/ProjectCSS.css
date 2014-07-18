@@ -1,0 +1,34 @@
+/*CSS per l'header.*/
+
+div.header > div#menu ul{
+	border-bottom-style: solid;
+	border-bottom-color: red;
+	padding-bottom: 0px;
+}
+
+div.header > div#menu li{
+	display: inline-block;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+	margin: 0px;
+	position: relative;
+}
+
+/*#logo{
+        position: absolute;
+}
+
+div.nav div#logo h1 {
+        background-image: url('../Images/logo.jpg');
+        background-repeat: no-repeat;
+        background-position: center left;
+        height: 100px;
+        vertical-align: middle;
+        padding-left: 100px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        line-height: 100px;
+        color: #ffffff;
+        display: block;
+}*/

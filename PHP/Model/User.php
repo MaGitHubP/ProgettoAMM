@@ -1,0 +1,56 @@
+<?php
+
+    /*Questa classe descrive un utente qualunque.*/
+    class User{
+        const Seller=1;
+        const Buyer=2;
+        
+        private $username;
+        private $password;
+        private $name;
+        private $surname;
+        private $role;
+	private $id;
+
+	public function __construct(){
+
+	}
+        
+        public function setUsername($username){
+            $this->username=$username;
+        }
+        public function getUsername(){
+            return $this->username;
+        }
+        public function setPassword($password){
+            $this->password=$password;
+        }
+        public function getPassword(){
+            return $this->password;
+        }
+        public function setName($name){
+            $this->name=$name;
+        }
+        public function getName(){
+            return $this->name;
+        }
+        public function setSurname($surname){
+            $this->surname=$surname;
+        }
+        public function getSurname(){
+            return $this->surname;
+        }
+        public function setRole($role){
+            $this->role=$role;
+        }
+        public function getRole(){
+            return $this->role;
+        }
+	public function setId($id){
+            $this->id=$id;
+        }
+        public function getId(){
+            return $this->id;
+        }
+    }
+?>

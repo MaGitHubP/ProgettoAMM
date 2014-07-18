@@ -1,0 +1,63 @@
+<?php
+    include_once 'InitialController.php';
+    include_once basename(__DIR__) . '/../Model/User.php';
+    include_once basename(__DIR__) . '/../Model/UserFactory.php';
+    
+    /*Questa classe gestisce le pagine del venditore, e le sue  
+     *modifiche dei dati.Il metodo handleInput gestisce i vari 
+     *input dell'utente venditore.*/
+    class SellerController extends InitialController{
+        
+        public function __construct() {
+            parent::__construct();
+        }
+        
+	/*Questo metodo prende come parametro un input del venditore e lo gestisce.*/
+        public function handleInput(&$request){
+            $view=new ViewDescriptor();
+            
+            $view->setPage($request["page"]);
+            
+	    //Se l'utente non è loggato, mostra la pagina del login.
+            if(!$this->isLogged()){
+		$this->showInitialPage($view);
+	    }else{
+		$usFac=new UserFactory();
+		$user = $usFac->IdLoadUser($_SESSION[InitialController::user], $_SESSION[InitialController::role]);
+                
+                if(isset($request["subpage"])){
+                    switch($request["subpage"]){
+                        case "see":
+                            $view->setSubPage("see");
+                            break;
+                        case "add":
+                            $view->setSubPage("add");
+                            break;
+                        case "delete":
+                            $view->setSubPage("delete");
+                            break;
+                        default:
+                            $view->setSubPage("home");
+                            break;
+                    }
+                }
+
+            	if(isset($request["cmd"])){
+                	switch($request["cmd"]){
+                    	case "logout":
+                        	$this->logout($view);
+                        	break;
+                    	default:
+                        	$this->showHomeUser($view);
+                	}
+            	}else{
+			$usFac=new UserFactory();
+			$user = $usFac->IdLoadUser($_SESSION[InitialController::user], $_SESSION[InitialController::role]);
+                	$this->showHomeUser($view);
+            	}
+            }
+	    require basename(__DIR__) . '/../View/Main.php';
+        }
+        
+    }
+?>
