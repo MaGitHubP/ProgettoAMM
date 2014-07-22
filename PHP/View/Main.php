@@ -29,11 +29,13 @@
                         ?>
 		    </div>
 
-                    <ul>
-                        <li id="facebook"><a href="www.facebook.com">facebook</a></li>
-                        <li id="twitter"><a href="https://twitter.com/">twitter</a></li>
-                        <li id="youtube"><a href="http://www.youtube.com/">youtube</a></li>
-                    </ul>
+		    <div class="social">
+                        <ul>
+                            <li id="facebook"><a href="https://www.facebook.com">facebook</a></li>
+                            <li id="twitter"><a href="https://twitter.com/">twitter</a></li>
+                            <li id="youtube"><a href="http://www.youtube.com/">youtube</a></li>
+                        </ul>
+		    </div>
                 </div>
                 
                 <!-- Qui viene posizionato il nav(Nav.php).  -->
@@ -116,11 +118,15 @@
                 }
                 ?>
 
-		<?php
-		    $content=$view->getContent();
-		    require "$content";
-		?>
+	        <div id="boxcontent">
+		    <?php
+		        $content=$view->getContent();
+		        require "$content";
+		    ?>
+		</div>
 	    </div>
+
+	    <div class="clear"></div>
             
             <!--Qui viene posizionato il footer.-->
 	    <footer>

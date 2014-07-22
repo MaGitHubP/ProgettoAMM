@@ -1,38 +1,328 @@
+body{
+	position: relative;
+	background-color: blue;
+}
+
+#page{
+	margin-top: 25px;
+	margin-bottom: 25px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 /*CSS per l'header.*/
 
-div.header{
-	background-color:blue;
+.header{
+	background-color: #b0c4de;
+	position: relative;
+	height: 50px;
+	width: 100%;
 }
 
-div.header > div#menu ul{
-	border-bottom-style: solid;
-	border-bottom-color: red;
+.header > div#menu ul{
+	position: absolute;
 	padding-bottom: 0px;
+	margin-bottom: 0px;
 }
 
-div.header > div#menu li{
+.header > div#menu li{
+	background-color: #6495ed;
 	display: inline-block;
-	border-top-style: solid;
-	border-left-style: solid;
-	border-right-style: solid;
+	border-style: outset;
 	margin: 0px;
 	position: relative;
 }
 
-/*#logo{
+.header .social ul{
+	position:absolute;
+	top: 0px;
+	right: 50px;
+}
+
+.header > div#menu li a:link{
+	text-decoration: none;
+}
+
+.header > div#menu li a:hover{
+	text-decoration: underline;
+}
+
+/*CSS per il nav.*/
+
+.nav{
+	position: relative;
+	background-color: purple;
+	border-style: ridge;
+	height: 120px;
+	width: 100%;
+}
+
+#logo{
         position: absolute;
 }
 
-div.nav div#logo h1 {
+.nav div#logo{
         background-image: url('../Images/logo.jpg');
         background-repeat: no-repeat;
         background-position: center left;
         height: 100px;
         vertical-align: middle;
+	padding-top: 10px;
+	padding-bottom: 10px;
         padding-left: 100px;
         margin-top: 0px;
         margin-bottom: 0px;
+	left: 20px;
         line-height: 100px;
         color: #ffffff;
         display: block;
+}
+
+.nav div#logo > h1{
+	position: absolute;
+	color: black;
+	left: 100px;
+	margin: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: block;
+}
+
+.nav div#search{
+	position: absolute;
+	left: 400px;
+	margin-top: 50px;
+        margin-bottom: 0px;
+}
+
+.nav div#log{
+	position: absolute;
+	right: 20px;
+	margin-top: 0px;
+        margin-bottom: 0px;
+}
+
+.nav div#log div#form{
+	position: relative;
+	top: 5px;
+	right: 300px;
+}
+
+.nav div#log div#form form{
+	position:absolute;
+	left: 100px;
+}
+
+.nav div#log div#form p{
+	position:absolute;
+	top: 30px;
+	left: 30px;
+}
+
+.nav div#log > a{
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	color: black;
+}
+
+.nav div#log > a:hover{
+	color: yellow;
+}
+
+/*CSS per la right bar.*/
+
+.leftbar{
+	position: relative;
+	background-color: #b0c4de;
+	border-style: groove;
+	border-right-color: #b0c4de;
+	width: 150px;
+}
+
+.leftbar table th{
+	background-color: #87ceeb;
+	border-style: double;
+	border-color: red;
+}
+
+.leftbar table td{
+	position: relative;
+	border-style: double;
+	border-color: red;
+}
+
+.leftbar ul{
+	position: relative;
+	right: 30px;
+}
+
+.leftbar li{
+	overflow: hidden;	
+}
+
+.leftbar li a:link{
+	text-decoration: none;
+}
+
+.leftbar li a:hover{
+	text-decoration: underline;
+}
+
+/*CSS per il content.*/
+
+.content{
+	position: absolute;
+	background-color: #b0c4de;
+	margin-left: 156px;
+	top: 176px;
+	width: 88%;
+	min-height: 708px;
+}
+
+.content #boxcontent{
+	position: relative;
+}
+
+.content #boxcontent p{
+	text-align: center;
+}
+
+.content #boxcontent ul.panel{
+	text-align: center;
+}
+
+.content #boxcontent li{
+	overflow: hidden;
+	background-color: #ba55d3;
+}
+
+.panel li{
+        display: block;
+        width: 400px;
+        height: 130px;
+        margin:auto;
+        margin-top: 15px;
+        border: 1px solid #1c345a;
+        position: relative;
+    }
+
+.panel li a{
+        display: block;
+        position: absolute;
+        line-height: 130px;
+        vertical-align: middle;
+        padding-left: 150px;
+        font-size: 1.5em;
+	color: black;
+	font-weight: bold;
+	font-family: serif;
+    }
+
+.panel li a:link{
+	color: black;
+	text-decoration: none;
+}
+
+.panel li a:hover{
+	text-decoration: underline;
+}
+
+.panel li a:active{
+	color: red;
+}
+
+/*.content #boxcontent li a#see{
+	background-image: url('../Images/');
+        background-repeat: no-repeat;
+}
+
+.content #boxcontent li a#recharge{
+	background-image: url('../Images/');
+        background-repeat: no-repeat;
+}
+
+.content #boxcontent li a#cart{
+	background-image: url('../Images/');
+        background-repeat: no-repeat;
+}
+
+.content #boxcontent li a#add{
+	background-image: url('../Images/');
+        background-repeat: no-repeat;
+}
+
+.content #boxcontent li a#delete{
+	background-image: url('../Images/');
+        background-repeat: no-repeat;
 }*/
+
+
+/*CSS per il footer.*/
+
+.footer{
+	position: relative;
+	height: 100px;
+	width: 100%;
+	background-color: purple;
+	border-style: groove;
+}
+
+.footer p{
+	display: block;
+	position:absolute;
+	top: 25px;
+	left: 20px;
+}
+
+.footer ul{
+	position: absolute;
+	top: 25px;
+	right: 20px;
+}
+
+/*Altri elementi non appartenenti a specifiche parti della pagina.*/
+
+a:active{
+	color: yellow;
+}
+
+
+.clear{
+    	clear: both; 
+    	width: 0px; 
+    	height: 0px;
+}
+
+.header .social ul, .footer ul{
+	list-style-type: none;
+	display: block;
+        float: right;
+        margin-right: 10px;
+}
+
+.header .social ul li, .footer ul li{
+	display: inline-block;
+        width: 24px;
+        height: 24px;
+        overflow: hidden;
+}
+
+.header .social ul li a:link, .footer ul li a:link{
+	color:transparent;
+}
+
+#facebook{
+	background-image: url('../Images/facebook.png');
+        background-repeat: no-repeat;
+}
+
+#twitter{
+	background-image: url('../Images/twitter.png');
+        background-repeat: no-repeat;
+}
+
+#youtube{
+	background-image: url('../Images/youtube.png');
+        background-repeat: no-repeat;
+}

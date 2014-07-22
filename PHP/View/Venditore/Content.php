@@ -16,9 +16,9 @@
 <p>Scegli cosa fare fra le possibilità elencate qui sotto.</p>
 
 <ul class="panel">
-    <li><a href="seller?subpage=see&genre=all&console=all">Visualizza merce</a></li>
-    <li><a href="seller?subpage=add">Aggiungi</a></li>
-    <li><a href="seller?subpage=delete">Togli</a></li>
+    <li><a href="seller?subpage=see&genre=all&console=all" id="see">Visualizza merce</a></li>
+    <li><a href="seller?subpage=add" id="add">Aggiungi</a></li>
+    <li><a href="seller?subpage=delete" id="delete">Togli</a></li>
 </ul>
 
 <?php
