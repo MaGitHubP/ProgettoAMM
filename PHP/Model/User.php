@@ -11,6 +11,9 @@
         private $surname;
         private $role;
 	private $id;
+	private $city;
+	private $address;
+	private $email;
 
 	public function __construct(){
 
@@ -52,5 +55,23 @@
         public function getId(){
             return $this->id;
         }
+	public function setCity($city){
+            $this->city=$city;
+        }
+        public function getCity(){
+            return $this->city;
+        }
+	public function setAddress($address){
+            $this->address=$address;
+        }
+        public function getAddress(){
+            return $this->address;
+        }
+	public function setEmail($email){
+	    $this->email=$email;
+	}
+	public function getEmail(){
+	    return $this->email;
+	}
     }
 ?>

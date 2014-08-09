@@ -23,19 +23,24 @@
 		$this->showInitialPage($view);
 	    }else{
 		$usFac=new UserFactory();
-		$user = $usFac->IdLoadUser($_SESSION[InitialController::user], $_SESSION[InitialController::role]);
+		$user = $usFac->IdLoadUser($view, $_SESSION[InitialController::user], $_SESSION[InitialController::role]);
 
                 if(isset($request["subpage"])){
                     switch($request["subpage"]){
+			case "profile":
+			    $view->setSubPage("profile");
+			    break;
                         case "see":
                             $genre="all";
 			    $console="all";
-			    $this->searchGames($view, $genre, $console);
+			    $limit_index=$request["limit_index"];
+			    $this->searchGames($view);
                             break;
                         case "recharge":
                             $view->setSubPage("recharge");
                             break;
                         case "cart":
+			    $limit_index=$request["limit_index"];
                             $view->setSubPage("cart");
                             break;
                         default:
@@ -50,27 +55,420 @@
                         	$this->logout($view);
                         	break;
 			case "search":
-                        	$genre=$request["genre"];
-                        	$console=$request["console"];
-                        	$this->searchGames($view, $genre, $console);
+                        	if(isset($request["research_name"])){
+			    	    $research_name=$request["research_name"];
+				    $name_game=$request["namesearch"];
+				    //Do un valore alle due variabili genre e console per evitare gli errori di variabili non inizializzate.
+				    $genre="set";
+                            	    $console="set";
+				}else{
+				    $genre=$request["genre"];
+                            	    $console=$request["console"];
+				}
+
+				$limit_index=$request["limit_index"];
+				$this->searchGames($view);
                         	break;
+			case "modify":
+				$info=$request["info"];
+				if($info=="delete"){
+				    $delete_account=true;
+				}else{
+				    $modify=true;
+				}
+
+				$view->setSubPage("profile");
+				$this->showHomeUser($view);
+				break;
+			case "modifyInfo":
+				$info=$request["info"];
+				if($info=="delete"){
+				    if($request["delete"]){
+					$this->deleteAccount($view, $user);
+				    }else{
+					$this->showHomeUser($view);
+				    }
+				}else{
+				    $newInfo=$request["newInfo"];
+				    $isOk=$this->modifyInfo($view, $info, $newInfo, $user);
+				    if($isOk==false){
+					$modify=true;
+				    	$view->setSubPage("profile");
+				    }else{
+				    	//Qui ricarico l'user per rendere subito visibili le eventuali modifiche fatte all'username.
+				    	$user = $usFac->IdLoadUser($view, $_SESSION[InitialController::user], $_SESSION[InitialController::role]);
+				    }
+				}
+
+				break;
+			case "recharge":
+				$code=$request["code"];
+				$add_money=$request["plus_money"];
+				$isOk=$this->rechargeCard($view, $code, $add_money, $user);
+				if($isOk!=true){
+				    $view->setSubPage("recharge");
+				}
+				//Qui ricarico l'user per rendere subito visibili le modifiche fatte alla carta di credito.
+				$user = $usFac->IdLoadUser($view, $_SESSION[InitialController::user], $_SESSION[InitialController::role]);
+
+				break;
+			case "confirmPurchase":
+				$id_videogame=$request["id_videogame"];
+				$price=$request["price"];
+				$genre=$request["genre"];
+			    	$console=$request["console"];
+				$confirm=true;
+				$view->setSubPage("see");
+				$this->showHomeUser($view);
+				break;
+			case "buy":
+				$id_videogame=$request["id_videogame"];
+				$price=$request["price"];
+				$code=$request["code"];
+				$isOk=$this->purchaseGame($view, $id_videogame, $code, $price, $user);
+
+				if($isOk!=true){
+				    $view->setSubPage("see");
+				    $confirm=true;
+				    //Riinizializzo queste due variabili in modo da rifare la ricerca dei videogiochi.
+				    $genre=$request["genre"];
+				    $console=$request["console"];
+				    $limit_index=0;
+				}
+				//Qui ricarico l'user per rendere subito visibili le modifiche fatte alla carta di credito.
+				$user = $usFac->IdLoadUser($view, $_SESSION[InitialController::user], $_SESSION[InitialController::role]);
+
+			    	break;
+			case "refuse":
+				$id_videogame=$request["id_videogame"];
+				$price=$request["price"];
+				
+				$this->denyPurchase($view, $id_videogame, $price, $user);
+				//Qui ricarico l'user per rendere subito visibili le modifiche fatte alla carta di credito.
+				$user = $usFac->IdLoadUser($view, $_SESSION[InitialController::user], $_SESSION[InitialController::role]);
+				break;
                     	default:
                         	$this->showHomeUser($view);
                 	}
             	}else{
 			$usFac=new UserFactory();
-			$user = $usFac->IdLoadUser($_SESSION[InitialController::user], $_SESSION[InitialController::role]);
+			$user = $usFac->IdLoadUser($view, $_SESSION[InitialController::user], $_SESSION[InitialController::role]);
                 	$this->showHomeUser($view);
             	}
             }
 	    require basename(__DIR__) . '/../View/Main.php';
         }
 
-	public function searchGames($view, $genre, $console){
+	public function searchGames($view){
                 
                 $view->setSubPage("see");
 		$this->showHomeUser($view);
         }
-        
+
+	public function rechargeCard($view, $code, $add_money, $user){
+	    $filter_int=filter_var($add_money, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+	    if(!isset($filter_int)){
+		$view->setErrorMessage("Errore:Il codice digitato non corrisponde a quello della tua carta.\n");
+		$this->showHomeUser($view);
+		return false;
+	    }
+	    //Creo una variabile mysql.
+            $mysqli=new mysqli();
+	    $mysqli->connect(Settings::$db_host, 
+			     Settings::$db_user, 
+			     Settings::$db_password, 
+			     Settings::$db_name);
+	    if($mysqli->connect_errno != 0){
+		$idError=$mysqli->connect_errno;
+		$msg=$mysqli->connect_error;
+		error_log("Errore connessione $idError!$msg", 0);
+		$view->setErrorMessage($msg);
+		$mysqli->close();
+		$this->showHomeUser($view);
+		return null;
+	    }else{
+		//Nessun Errore!Procedo con la query.
+		$temp_id=$user->getId();
+		$temp_card=$user->getCreditCard();
+		$query="SELECT code, money FROM credit_card JOIN buyer ON credit_card.id=$temp_card WHERE id_buyer=$temp_id";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    return null;
+		}else{
+		    while($temp=$result->fetch_row()){
+			$my_code=$temp[0];
+			$my_money=$temp[1];
+		    }
+		}
+
+		if($code==$my_code){
+		    $newMyMoney=$my_money + $add_money;
+		    $query="UPDATE credit_card SET money=$newMyMoney WHERE credit_card.id=$temp_card";
+		    $result=$mysqli->query($query);
+
+		    if($mysqli->errno > 0){
+		        error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		        return null;
+		    }
+		    $mysqli->close();
+		    $user=$this->showHomeUser($view);
+		    return true;
+		}else{
+		    $mysqli->close();
+		    $view->setErrorMessage("Errore:Il codice digitato non corrisponde a quello della tua carta.\n");
+		    $this->showHomeUser($view);
+		    return false;
+		}
+	    }
+	}
+
+        public function purchaseGame($view, $id_videogame, $code, $price, $user){
+	    //Creo una variabile mysql.
+            $mysqli=new mysqli();
+	    $mysqli->connect(Settings::$db_host, 
+			     Settings::$db_user, 
+			     Settings::$db_password, 
+			     Settings::$db_name);
+	    if($mysqli->connect_errno != 0){
+		$idError=$mysqli->connect_errno;
+		$msg=$mysqli->connect_error;
+		error_log("Errore connessione $idError!$msg", 0);
+		$view->setErrorMessage($msg);
+		$mysqli->close();
+		$this->showHomeUser($view);
+		return null;
+	    }else{
+		//Non c'è nessun errore, quindi inizio una Transizione.
+		$mysqli->autocommit(false);
+
+		$temp_id=$user->getId();
+		$temp_card=$user->getCreditCard();
+		$query="UPDATE videogame SET owner=$temp_id WHERE videogame.id=$id_videogame";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    $mysqli->rollback();
+		    $mysqli->autocommit(true);
+		    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    return null;
+		}
+
+		$query="SELECT code, money FROM credit_card JOIN buyer ON credit_card.id=$temp_card WHERE id_buyer=$temp_id";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    $mysqli->rollback();
+		    $mysqli->autocommit(true);
+		    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    return null;
+		}else{
+		    while($temp=$result->fetch_row()){
+			$my_code=$temp[0];
+			$my_money=$temp[1];
+		    }
+		}
+
+		if($code==$my_code){
+		    if($my_money>=$price){
+			$my_money-=$price;
+			$query="UPDATE credit_card SET money=$my_money WHERE credit_card.id=$temp_card";
+			$result=$mysqli->query($query);
+
+			if($mysqli->errno > 0){
+		    	    $mysqli->rollback();
+			    $mysqli->autocommit(true);
+		    	    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    	    return null;
+			}
+
+			$mysqli->commit();
+			$mysqli->autocommit(true);
+			$mysqli->close();
+		    	$this->showHomeUser($view);
+
+			return true;
+		    }else{
+			$mysqli->rollback();
+			$mysqli->autocommit(true);
+		    	$mysqli->close();
+			$view->setErrorMessage("Errore:Non hai abbastanza soldi per effetuare questo acquisto.\n");
+		    	$this->showHomeUser($view);
+		    	return null;
+		    }
+		}else{
+		    $mysqli->rollback();
+		    $mysqli->autocommit(true);
+		    $mysqli->close();
+		    $view->setErrorMessage("Errore:Il codice digitato non corrisponde a quello della tua carta.\n");
+		    $this->showHomeUser($view);
+		    return null;
+		}
+	    }
+	}
+
+	public function denyPurchase($view, $id_videogame, $price, $user){
+	    //Creo una variabile mysql.
+            $mysqli=new mysqli();
+	    $mysqli->connect(Settings::$db_host, 
+			     Settings::$db_user, 
+			     Settings::$db_password, 
+			     Settings::$db_name);
+	    if($mysqli->connect_errno != 0){
+		$idError=$mysqli->connect_errno;
+		$msg=$mysqli->connect_error;
+		error_log("Errore connessione $idError!$msg", 0);
+		$view->setErrorMessage($msg);
+		$mysqli->close();
+		$this->showHomeUser($view);
+		return null;
+	    }else{
+		//Non c'è nessun errore, quindi inizio una Transizione.
+		$mysqli->autocommit(false);
+
+		$query="UPDATE videogame SET owner=1 WHERE videogame.id=$id_videogame";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    $mysqli->rollback();
+		    $mysqli->autocommit(true);
+		    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    return null;
+		}
+
+		$temp_id=$user->getId();
+		$temp_card=$user->getCreditCard();
+		$query="SELECT money FROM credit_card JOIN buyer ON credit_card.id=$temp_card WHERE id_buyer=$temp_id";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    $mysqli->rollback();
+		    $mysqli->autocommit(true);
+		    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    return null;
+		}else{
+		    while($temp=$result->fetch_row()){
+			$my_money=$temp[0];
+		    }
+		}
+		$my_money+=$price;
+		$query="UPDATE credit_card SET money=$my_money WHERE credit_card.id=$temp_card";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    	$mysqli->rollback();
+			$mysqli->autocommit(true);
+		    	error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    	return null;
+		}
+
+		$mysqli->commit();
+		$mysqli->autocommit(true);
+		$mysqli->close();
+		$this->showHomeUser($view);
+		
+	    }
+	}
+
+	public function modifyInfo($view, $info, $newInfo, $user){
+	    if($info=="email"){
+		if(!filter_var($newInfo, FILTER_VALIDATE_EMAIL)){
+		    $view->setErrorMessage("Errore:Digita un indirizzo email valido.\n");
+		    $this->showHomeUser($view);
+		    return false;
+		}
+	    }
+	    
+	    //Creo una variabile mysql.
+            $mysqli=new mysqli();
+	    $mysqli->connect(Settings::$db_host, 
+			     Settings::$db_user, 
+			     Settings::$db_password, 
+			     Settings::$db_name);
+	    if($mysqli->connect_errno != 0){
+		$idError=$mysqli->connect_errno;
+		$msg=$mysqli->connect_error;
+		error_log("Errore connessione $idError!$msg", 0);
+		$view->setErrorMessage($msg);
+		$mysqli->close();
+		$this->showHomeUser($view);
+		return null;
+	    }else{
+		//Nessun Errore!Procedo con la modifica.
+		$temp_id=$user->getId();
+		$query="UPDATE user SET $info=\"$newInfo\" WHERE user.id=$temp_id";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    return null;
+		}
+
+		$this->showHomeUser($view);
+		return true;
+	    }
+	}
+
+	public function deleteAccount($view, $user){
+	    //Creo una variabile mysql.
+            $mysqli=new mysqli();
+	    $mysqli->connect(Settings::$db_host, 
+			     Settings::$db_user, 
+			     Settings::$db_password, 
+			     Settings::$db_name);
+	    if($mysqli->connect_errno != 0){
+		$idError=$mysqli->connect_errno;
+		$msg=$mysqli->connect_error;
+		error_log("Errore connessione $idError!$msg", 0);
+		$view->setErrorMessage($msg);
+		$mysqli->close();
+		$this->showHomeUser($view);
+		return null;
+	    }else{
+		//Non c'è nessun errore, quindi inizio con la cancellazione.
+		$mysqli->autocommit(false);
+
+		$id=$user->getId();
+		$IDB=$user->getIDB();
+		$credit_card_id=$user->getCreditCard();
+
+		$query="DELETE FROM `giochiammo`.`buyer` WHERE `buyer`.`id` = $IDB";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    $mysqli->rollback();
+		    $mysqli->autocommit(true);
+		    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    return null;
+		}
+
+		$query="DELETE FROM `giochiammo`.`user` WHERE `user`.`id` = $id";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    $mysqli->rollback();
+		    $mysqli->autocommit(true);
+		    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    return null;
+		}
+
+		$query="DELETE FROM `giochiammo`.`credit_card` WHERE `credit_card`.`id` = $credit_card_id";
+		$result=$mysqli->query($query);
+
+		if($mysqli->errno > 0){
+		    $mysqli->rollback();
+		    $mysqli->autocommit(true);
+		    error_log("Errore nell'esecuzione della query $mysqli->errno : $mysqli->error, 0");
+		    return null;
+		}
+
+		$mysqli->commit();
+		$mysqli->autocommit(true);
+		$mysqli->close();
+
+		$this->logout($view);
+	    }
+	}
     }
 ?>

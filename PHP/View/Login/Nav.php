@@ -1,5 +1,7 @@
+<div><a href="login?subpage=sign_up" class="sign_up">Registrazione</a></div>
+
+<p><strong>Accedi</strong></p>
 <div id="form">
-    <p><strong>Accedi</strong></p>
     <form method="post" action="login">
     	<input type="hidden" name="cmd" value="login"/>
     	<label for="username">Username:</label>

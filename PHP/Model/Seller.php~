@@ -1,0 +1,21 @@
+<?php
+	include_once 'User.php';
+
+	class Seller extends User{
+
+	    private $seller_id;
+		
+	    public function __construct(){
+		    parent::__construct();
+        	    $this->setRole(User::Seller);
+	    }
+
+	    public function setSellerId($seller_id){
+		$this->seller_id=$seller_id;
+	    }
+	    public function getSellerId(){
+		return $this->seller_id;
+	    }
+
+	}
+?>

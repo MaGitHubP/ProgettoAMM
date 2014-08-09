@@ -1,1 +1,6 @@
-<a href="seller?cmd=logout">Logout</a>
+<div class="profile">
+    <label for="profile">Profilo:</label>
+    <a href="buyer?subpage=profile" id="profile"><?= $user->getUsername() ?></a>
+</div>
+
+<a href="buyer?cmd=logout" class="logout">Logout</a>

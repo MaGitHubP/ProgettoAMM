@@ -7,9 +7,9 @@ class Settings {
 
     // variabili di accesso per il database
     public static $db_host = 'localhost';
-    public static $db_user = 'esammi';
-    public static $db_password = 'davide';
-    public static $db_name='esammi';
+    public static $db_user = 'amm';
+    public static $db_password = 'progetto';
+    public static $db_name='giochiammo';
     
     private static $appPath;
 
@@ -24,7 +24,7 @@ class Settings {
             switch ($_SERVER['HTTP_HOST']) {
                 case 'localhost':
                     // configurazione locale
-                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/ProgettoAMM/Progetto/PHP/';
+                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/ProgettoAMM/';
                     break;
                 case 'giochiaAMMo.com':
                     // configurazione pubblica

@@ -7,6 +7,8 @@
 	private $bar;
 	private $content;
 	private $page;
+	private $subPage;
+	private $script;//////////////////////////////
 	private $errorMsg;
         const get='get';
         const post='post';
@@ -60,6 +62,14 @@
 	}
 	public function getPage(){
 		return $this->page;
+	}
+	/*La variabile subPage viene usata come valore degli switch nei content 
+	 *delle varie pagine, in modo da mostrare le eventuali sottopagine.*/
+	public function setSubPage($subPage){
+		$this->subPage=$subPage;
+	}
+	public function getSubPage(){
+		return $this->subPage;
 	}
 	/*La variabile errorMsg contiene un messaggio di errore.Viene mostrato nel caso ci 
 	 *fosse qualche problema.*/

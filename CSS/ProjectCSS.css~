@@ -1,22 +1,25 @@
 body{
-	position: relative;
+	position: static;
 	background-color: blue;
 }
 
 #page{
+	position: relative;
 	margin-top: 25px;
 	margin-bottom: 25px;
 	margin-left: auto;
 	margin-right: auto;
+	width: 100%;
 }
 
 /*CSS per l'header.*/
 
 .header{
 	background-color: #b0c4de;
-	position: relative;
+	position: absolute;
 	height: 50px;
 	width: 100%;
+	z-index: 0;
 }
 
 .header > div#menu ul{
@@ -33,10 +36,18 @@ body{
 	position: relative;
 }
 
+.header #name_search{
+	position:absolute;
+	left: 40%;
+	top: 30%;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
 .header .social ul{
 	position:absolute;
 	top: 0px;
-	right: 50px;
+	right: 5%;
 }
 
 .header > div#menu li a:link{
@@ -50,11 +61,13 @@ body{
 /*CSS per il nav.*/
 
 .nav{
-	position: relative;
+	position: absolute;
+	top: 50px;
 	background-color: purple;
 	border-style: ridge;
 	height: 120px;
 	width: 100%;
+	z-index: 1;
 }
 
 #logo{
@@ -90,64 +103,68 @@ body{
 
 .nav div#search{
 	position: absolute;
-	left: 400px;
+	left: 30%;
 	margin-top: 50px;
         margin-bottom: 0px;
 }
 
-.nav div#log{
+.nav div > a.sign_up{
 	position: absolute;
-	right: 20px;
-	margin-top: 0px;
-        margin-bottom: 0px;
-}
-
-.nav div#log div#form{
-	position: relative;
-	top: 5px;
-	right: 300px;
-}
-
-.nav div#log div#form form{
-	position:absolute;
-	left: 100px;
-}
-
-.nav div#log div#form p{
-	position:absolute;
-	top: 30px;
-	left: 30px;
-}
-
-.nav div#log > a{
-	position: absolute;
-	top: 50px;
-	right: 50px;
+	top: 40%;
+	right: 22%;
 	color: black;
 }
 
-.nav div#log > a:hover{
+.nav div#form{
+	position: absolute;
+	top: 25%;
+	right: 0%;
+}
+
+.nav p{
+	position: absolute;
+	right:15%;
+	top: 0%;
+	margin-top: 1%;
+}
+
+.nav div.profile{
+	position: absolute;
+	top: 40%;
+	right: 15%;
+	color: black;
+}
+
+.nav a.logout{
+	position: absolute;
+	top: 40%;
+	right: 5%;
+	color: black;
+}
+
+.nav a:hover, .nav a.sign_up:hover{
 	color: yellow;
 }
 
-/*CSS per la right bar.*/
-
+/*CSS per la leftbar.*/
 .leftbar{
-	position: relative;
+	position: absolute;
+	top: 176px;
 	background-color: #b0c4de;
-	border-style: groove;
-	border-right-color: #b0c4de;
-	width: 150px;
+	width: 12%;
+	min-height: 800px;
+	z-index: 1;
 }
 
 .leftbar table th{
 	background-color: #87ceeb;
 	border-style: double;
 	border-color: red;
+	width: 12%;
 }
 
 .leftbar table td{
-	position: relative;
+	width: 12%;
 	border-style: double;
 	border-color: red;
 }
@@ -169,22 +186,34 @@ body{
 	text-decoration: underline;
 }
 
+/*CSS per la rightbar.*/
+/*.rightbar{
+	position: absolute;
+	top: 176px;
+	right: 0%;
+	background-color: #b0c4de;
+	width: 12%;
+	min-height: 800px;
+	z-index: 1;
+}
+
 /*CSS per il content.*/
 
 .content{
 	position: absolute;
 	background-color: #b0c4de;
-	margin-left: 156px;
-	top: 176px;
+	top: 175px;
+	left: 12%;
 	width: 88%;
-	min-height: 708px;
+	min-height: 800px;
+	z-index: 0;
 }
 
 .content #boxcontent{
 	position: relative;
 }
 
-.content #boxcontent p{
+.content #boxcontent p#main_p{
 	text-align: center;
 }
 
@@ -219,8 +248,109 @@ body{
 	font-family: serif;
     }
 
+.content #boxcontent p#results{
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.content #boxcontent li.lineVG{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-style: groove;
+	border-color: white;
+}
+
+.content #boxcontent img#game_cover{
+	float: left;
+}
+
+.content #boxcontent p#game_title{
+	margin: 0px;
+}
+
+.content #boxcontent p#game_genre{
+	margin: 0px;
+}
+
+.content #boxcontent p#game_console{
+	margin: 0px;
+}
+
+.content #boxcontent p#game_date{
+	margin: 0px;
+}
+
+.content #boxcontent p#game_price{
+	margin: 0px;
+}
+
+.content #boxcontent a#next{
+	position: absolute;
+	right: 1%;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.content #boxcontent a#prev{
+	position: absolute;
+	left: 1%;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.content #boxcontent #form{
+	position: absolute;
+	left: 35%;
+	top: 10%;
+	margin-top: 0px;
+        margin-bottom: 0px;
+	padding: 0px;
+}
+
+.content #boxcontent #form input, .content #boxcontent #form label{
+	margin: 5px;
+}
+
+.content #boxcontent #info{
+	position: absolute;
+	left: 35%;
+	margin-top: 0px;
+        margin-bottom: 0px;
+	padding: 0px;
+}
+
+.content #boxcontent #info col.even{
+	background-color: #40E0D0;
+}
+
+.content #boxcontent #info col.odd{
+	background-color: blue;
+}
+
+.content #boxcontent #modify_info{
+	position: absolute;
+	left: 35%;
+	margin-top: 0px;
+        margin-bottom: 0px;
+	padding: 0px;
+}
+
+.content #boxcontent #recharge{
+	position: absolute;
+	left: 35%;
+	margin-top: 0px;
+        margin-bottom: 0px;
+	padding: 0px;
+}
+
 .panel li a:link{
 	color: black;
+	text-decoration: none;
+}
+
+.content #boxcontent a.deletegame:link, .content #boxcontent a.delete:link{
+	color: red;
 	text-decoration: none;
 }
 
@@ -228,44 +358,80 @@ body{
 	text-decoration: underline;
 }
 
+.content #boxcontent a.deletegame:hover, .content #boxcontent a.delete:hover{
+	text-decoration: underline;
+}
+
 .panel li a:active{
 	color: red;
 }
 
-/*.content #boxcontent li a#see{
-	background-image: url('../Images/');
+.content #boxcontent li a#sign_up{
+	background-image: url('../Images/registration.png');
+        background-repeat: no-repeat;
+}
+
+.content #boxcontent li a#profile{
+	background-image: url('../Images/anagrafica.png');
+        background-repeat: no-repeat;
+}
+
+.content #boxcontent li a#see{
+	background-image: url('../Images/search.png');
         background-repeat: no-repeat;
 }
 
 .content #boxcontent li a#recharge{
-	background-image: url('../Images/');
+	background-image: url('../Images/credit_card.png');
         background-repeat: no-repeat;
 }
 
 .content #boxcontent li a#cart{
-	background-image: url('../Images/');
+	background-image: url('../Images/shoping_cart.png');
+        background-repeat: no-repeat;
+}
+
+.content #boxcontent li a#deleteaccount{
+	background-image: url('../Images/delete_account.png');
+        background-repeat: no-repeat;
+}
+
+.content #boxcontent li a#nodelete{
+	background-image: url('../Images/no.png');
         background-repeat: no-repeat;
 }
 
 .content #boxcontent li a#add{
-	background-image: url('../Images/');
+	background-image: url('../Images/plus.png');
         background-repeat: no-repeat;
 }
 
 .content #boxcontent li a#delete{
-	background-image: url('../Images/');
+	background-image: url('../Images/delete.png');
         background-repeat: no-repeat;
-}*/
+}
+
+.error{
+    width: 90%;
+    background-color: #f5a5a5;
+    border: 5px solid #9e1616;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    margin-top: 5px;
+}
 
 
 /*CSS per il footer.*/
 
 .footer{
-	position: relative;
+	position: absolute;
+	top: 960px;
 	height: 100px;
 	width: 100%;
 	background-color: purple;
 	border-style: groove;
+	z-index: 1;
 }
 
 .footer p{

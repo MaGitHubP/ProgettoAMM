@@ -5,41 +5,49 @@
     <tr>
 	<td>
     	    <ul>
-    	    	<li><a href="seller?cmd=search&genre=adventure&console=all">Adventure</a></li>
-    	    	<li><a href="seller?cmd=search&genre=action&console=all">Azione</a></li>
-    	    	<li><a href="seller?cmd=search&genre=fighting&console=all">Picchiaduro</a></li>
-    	    	<li><a href="seller?cmd=search&genre=platform&console=all">Platform</a></li>
-    	    	<li><a href="seller?cmd=search&genre=puzzle&console=all">Puzzle Game</a></li>
-    	    	<li><a href="seller?cmd=search&genre=rpg&console=all">RPG</a></li>
-    	    	<li><a href="seller?cmd=search&genre=simulation&console=all">Simulazione</a></li>
-    	    	<li><a href="seller?cmd=search&genre=fps&console=all">Sparatutto</a></li>
-    	    	<li><a href="seller?cmd=search&genre=sport&console=all">Sportivi</a></li>
-    	    	<li><a href="seller?cmd=search&genre=strategy&console=all">Strategici</a></li>
-    	    	<li><a href="seller?cmd=search&genre=horror&console=all">Survival Horror</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Avventura&console=all">Adventure</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Azione&console=all">Azione</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Picchiaduro&console=all">Picchiaduro</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Platform&console=all">Platform</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Puzzle&console=all">Puzzle Game</a></li>
+    	    	<li><a href="seller?cmd=search&genre=RPG&console=all">RPG</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Simulazione&console=all">Simulazione</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Sparatutto&console=all">Sparatutto</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Sportivo&console=all">Sportivi</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Strategia&console=all">Strategici</a></li>
+    	    	<li><a href="seller?cmd=search&genre=Horror&console=all">Survival Horror</a></li>
     
     	    </ul>
 	</td>
     </tr>
 </table>
 
-<h2>Piattaforma</h2>
-<ul>
-    <li><a href="seller?cmd=search&genre=all&console=gb">Game Boy</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=gba">Game Boy Advance</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=gc">Game Cube</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=3ds">Nintendo 3DS</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=n64">Nintendo 64</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=nds">Nintendo DS</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=pc">Pc</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=psx">PlayStation 1</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=ps2">PlayStation 2</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=ps3">PlayStation 3</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=ps4">PlayStation 4</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=psvita">PS Vita</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=psp">PSP</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=xbox">XBox</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=x360">XBox 360</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=xone">XBox One</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=wii">Wii</a></li>
-    <li><a href="seller?cmd=search&genre=all&console=wiiu">Wii U</a></li>
-</ul>
+<table>
+    <tr>
+	<th>Piattaforma</th>
+    </tr>
+    <tr>
+	<td>
+	    <ul>
+    		<li><a href="seller?cmd=search&genre=all&console=GameBoy">Game Boy</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=GBA">Game Boy Advance</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=GameCube">Game Cube</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=3DS">Nintendo 3DS</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=N64">Nintendo 64</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=NDS">Nintendo DS</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=PC">Pc</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=PSX">PlayStation 1</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=PS2">PlayStation 2</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=PS3">PlayStation 3</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=PS4">PlayStation 4</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=PSVita">PS Vita</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=PSP">PSP</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=XBox">XBox</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=X360">XBox 360</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=XOne">XBox One</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=Wii">Wii</a></li>
+    		<li><a href="seller?cmd=search&genre=all&console=WiiU">Wii U</a></li>
+	    </ul>
+	</td>
+    </tr>
+</table>

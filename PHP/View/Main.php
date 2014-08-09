@@ -29,6 +29,18 @@
                         ?>
 		    </div>
 
+		    <div id="name_search">
+			<form method="post" action="search">
+			    <input type="hidden" name="research_name" value="true"/>
+			    <input type="hidden" name="cmd" value="search"/>
+			    <input type="hidden" name="page" value="<?= $view->getPage() ?>"/>
+			    <input type="hidden" name="limit_index" value=0 />
+			    <label for="namesearch"><b>Ricerca:</b></label>
+			    <input type="text" name="namesearch" id="namesearch"/>
+			    <input type="submit" value="Search"/>
+			</form>
+		    </div>
+
 		    <div class="social">
                         <ul>
                             <li id="facebook"><a href="https://www.facebook.com">facebook</a></li>
@@ -45,56 +57,57 @@
                         <form method="post" action="search">
 			    <input type="hidden" name="cmd" value="search"/>
 			    <input type="hidden" name="page" value="<?= $view->getPage() ?>"/>
+			    <input type="hidden" name="limit_index" value=0 />
                             <label for="searchlist1">Genere</label>
                             <select name="genre" id="searchlist1">
                                 <option value="all">All</option>
-                                <option value="adventure">Adventure</option>
-                                <option value="action">Azione</option>
-                                <option value="fighting">Picchiaduro</option>
-                                <option value="platform">Platform</option>
-                                <option value="puzzle">Puzzle Game</option>
-                                <option value="rpg">RPG</option>
-                                <option value="simulation">Simulazione</option>
-                                <option value="fps">Sparatutto</option>
-                                <option value="sport">Sportivi</option>
-                                <option value="strategy">Strategici</option>
-                                <option value="horror">Survival Horror</option>
+                                <option value="Avventura">Adventure</option>
+                                <option value="Azione">Azione</option>
+                                <option value="Picchiaduro">Picchiaduro</option>
+                                <option value="Platform">Platform</option>
+                                <option value="Puzzle">Puzzle Game</option>
+                                <option value="RPG">RPG</option>
+                                <option value="Simulazione">Simulazione</option>
+                                <option value="Sparatutto">Sparatutto</option>
+                                <option value="Sportivo">Sportivi</option>
+                                <option value="Strategia">Strategici</option>
+                                <option value="Horror">Survival Horror</option>
                             </select>
                             <label for="searchlist2">Piattaforma</label>
                             <select name="console" id="searchlist2">
                                 <option value="all">All</option>
-                                <option value="gb">Game Boy</option>
-                                <option value="gba">Game Boy Advance</option>
-                                <option value="gc">Game Cube</option>
-                                <option value="3ds">Nintendo 3DS</option>
-                                <option value="n64">Nintendo 64</option>
-                                <option value="nds">Nintendo DS</option>
-                                <option value="pc">PC</option>
-                                <option value="psx">PlayStation 1</option>
-                                <option value="ps2">PlayStation 2</option>
-                                <option value="ps3">PlayStation 3</option>
-                                <option value="ps4">PlayStation 4</option>
-                                <option value="psvita">PS Vita</option>
-                                <option value="psp">PSP</option>
-                                <option value="xbox">XBox</option>
-                                <option value="x360">XBox 360</option>
-                                <option value="xone">XBox One</option>
-                                <option value="wii">Wii</option>
-                                <option value="wiiu">Wii U</option>
+                                <option value="GameBoy">Game Boy</option>
+                                <option value="GBA">Game Boy Advance</option>
+                                <option value="GameCube">Game Cube</option>
+                                <option value="3DS">Nintendo 3DS</option>
+                                <option value="N64">Nintendo 64</option>
+                                <option value="NDS">Nintendo DS</option>
+                                <option value="PC">PC</option>
+                                <option value="PSX">PlayStation 1</option>
+                                <option value="PS2">PlayStation 2</option>
+                                <option value="PS3">PlayStation 3</option>
+                                <option value="PS4">PlayStation 4</option>
+                                <option value="PSVita">PS Vita</option>
+                                <option value="PSP">PSP</option>
+                                <option value="XBox">XBox</option>
+                                <option value="X360">XBox 360</option>
+                                <option value="XOne">XBox One</option>
+                                <option value="Wii">Wii</option>
+                                <option value="WiiU">Wii U</option>
                             </select>
                             <input type="submit" value="Search"/>
                         </form>
                     </div>
-                    <div id="log">
-                        <?php
-                            $log=$view->getLog();
-                            require "$log";
-                        ?>
-                    </div>
+
+                    <?php
+                        $log=$view->getLog();
+                        require "$log";
+                    ?>
+
                 </div>
             </header>
 
-	    <!--Qui viene posizionato la sidebar sinistra.-->
+	    <!--Qui viene posizionata la sidebar sinistra.-->
 	    <div class="leftbar">
 		<?php
 		    $leftBar=$view->getLeftBar();
@@ -131,7 +144,7 @@
             <!--Qui viene posizionato il footer.-->
 	    <footer>
                 <div class="footer">
-                    <p>Nome:Mauro - Cognome:Pisano - Matricola:48406</p>
+                    <p><b>Nome:</b>Mauro - <b>Cognome:</b>Pisano - <b>Matricola:</b>48406</p>
                 
                     <ul>
                         <li id="facebook"><a href="www.facebook.com">facebook</a></li>

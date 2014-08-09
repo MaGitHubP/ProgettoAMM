@@ -1,4 +1,6 @@
-<form method="post" action="logout">
-    <?php unset($_REQUEST["page"]); ?>
-    <input type="submit" name="logout" value="Log out"/>
-</form>
+<!--<div>
+    <p>Profilo:</p>
+    <a href="seller?subpage=profile" class="profile"><?= $user->getUsername() ?></a>
+</div>-->
+
+<a href="seller?cmd=logout">Logout</a>
