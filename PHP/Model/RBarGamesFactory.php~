@@ -1,5 +1,6 @@
 <?php
 include_once 'RBarGames.php';
+include_once basename(__DIR__) . '/../Settings.php';
 
 class RBarGamesFactory{
 
@@ -35,7 +36,6 @@ class RBarGamesFactory{
 					$games[$i]->setId($i);
 					$games[$i]->setTitle($row[1]);
 					$games[$i]->setCover($row[6]);
-					$games[$i]->setNumResults($result->num_rows);
 					$i+=1;
 				    }
 

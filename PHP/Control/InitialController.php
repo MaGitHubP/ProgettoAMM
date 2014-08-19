@@ -2,6 +2,8 @@
     include_once basename(__DIR__) . '/../View/ViewDescriptor.php';
     include_once basename(__DIR__) . '/../Model/User.php';
     include_once basename(__DIR__) . '/../Model/UserFactory.php';
+    include_once basename(__DIR__) . '/../Model/RBarGames.php';
+    include_once basename(__DIR__) . '/../Model/RBarGamesFactory.php';
     
     /*Questa classe gestisce le pagine "iniziali", cioè quelle in cui 
      *viene richiesto il login.Il metodo handleInput gestisce i vari 
@@ -18,6 +20,10 @@
         /*Questo metodo prende come parametro un input dell'utente e lo gestisce.*/
         public function handleInput(&$request){
             $view=new ViewDescriptor();
+
+	    $gamesList = RBarGamesFactory::getGamesList();
+            $ajaxMode = false;
+	    
             
             $view->setPage($request["page"]);
 
@@ -55,6 +61,7 @@
 			/*Qui ritorno una variabile User, in modo che quando viene fatto
 			 *il require del Main, le variabili $user siano inizializzate.*/
                         $user=$this->login($view, $username, $password);
+			$game = $gamesList[0];
                         break;
 		    case "sign_up":
 			$username=$request["username"];
@@ -88,7 +95,8 @@
 			    $usFac=new UserFactory();
 			    $user = $usFac->IdLoadUser($view, $_SESSION[InitialController::user], $_SESSION[InitialController::role]);
 			}
-			
+			$game = $gamesList[0];
+
 			break;
                     case "search":
 			if(isset($request["research_name"])){
@@ -158,15 +166,59 @@
 			}
 			
 			$view->setSubPage("see");
+			$game = $gamesList[0];
 
 		        break;
+		    case "next":
+			$filter_int=filter_var($request["game_id"], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+
+			if(!isset($filter_int)){
+			    $filter_int=0;
+			}
+			$filter_int++;
+                    	if ($filter_int >= 0 && $filter_int < count($gamesList)) {
+                            $game = $gamesList[$filter_int];
+                    	}
+                    	$ajaxMode = true;
+
+			break;
+		    case "prev":
+			$filter_int=filter_var($request["game_id"], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+
+			if(!isset($filter_int)){
+			    $filter_int=0;
+			}
+			$filter_int--;
+                    	if ($filter_int >= 0 && $filter_int < count($gamesList)) {
+                            $game = $gamesList[$filter_int];
+                    	}
+                    	$ajaxMode = true;
+
+			break;
                     default:
                         $this->showInitialPage($view);
                 }
             }else{
                 $this->showInitialPage($view);
+		$game = $gamesList[0];	
             }
-            require basename(__DIR__) . '/../View/Main.php';
+
+            if($ajaxMode){
+		header('Cache-Control: no-cache, must-revalidate');
+		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+		header('Content-type: application/json');
+
+		$json = array();
+
+		$json["id"] = $game->getId();
+		$json["title"] = $game->getTitle();
+		$json["cover"] = $game->getCover();
+
+		echo json_encode($json);
+
+	    }else{
+		require basename(__DIR__) . '/../View/Main.php';
+    	    }
         }
         
 	/*Questo metodo gestisce il login dell'utente.*/

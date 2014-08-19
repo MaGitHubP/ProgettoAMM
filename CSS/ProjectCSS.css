@@ -187,14 +187,45 @@ body{
 }
 
 /*CSS per la rightbar.*/
-/*.rightbar{
+.rightbar{
 	position: absolute;
 	top: 176px;
 	right: 0%;
 	background-color: #b0c4de;
+	border-style: double;
+	border-color: red;
 	width: 12%;
 	min-height: 800px;
 	z-index: 1;
+}
+
+.rightbar h3{
+	position: absolute;
+	left: 15%;
+}
+
+.rightbar img{
+	position: absolute;
+	top: 10%;
+	left: 10%;
+}
+
+.rightbar span{
+	position: absolute;
+	top: 30%;
+	left: 15%;
+}
+
+.rightbar button#prev_game{
+	position: absolute;
+	top: 40%;
+	left: 5%;
+}
+
+.rightbar button#next_game{
+	position: absolute;
+	top: 40%;
+	left: 55%;
 }
 
 /*CSS per il content.*/

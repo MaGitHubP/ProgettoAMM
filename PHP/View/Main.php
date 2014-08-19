@@ -11,6 +11,8 @@
         <meta name="keywords" contents="Progetto di AMM."/>
         <meta name="description" contents="Sito per comprare e vendere videogiochi."/>
         <link href="../CSS/ProjectCSS.css" rel="stylesheet" type="text/css" media="screen" />
+	<script type="text/javascript" src="../Ajax/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../Ajax/Fotogallery.js"></script>
         
     </head>
     <body>
@@ -113,6 +115,20 @@
 		    $leftBar=$view->getLeftBar();
 		    require "$leftBar";
 		?>
+	    </div>
+
+	    <!--Qui viene posizionata la sidebar destra.-->
+	    <div class="rightbar">
+		<h3>Giochi disponibili</h3>
+	
+            	<input type ="hidden" value="<?=$game->getId(); ?>" name="id_game" id ="id_game"/>
+		<img id="cover_game" class="cover_game" src="../Images/Boxart/<?= $game->getCover()?>" alt="Cover <?=$game->getTitle(); ?>"/>
+                <span id="title_game"><?=$game->getTitle(); ?></span>
+      
+		
+                <button id="prev_game">Indietro</button>
+                <button id="next_game">Avanti</button>        
+
 	    </div>
 
 	    <!--Qui viene posizionato il content.-->

@@ -19,6 +19,7 @@ Utilizzo di PHP e MySQL.
 Utilizzo del pattern MVC.
 Almeno due ruoli(Venditore e compratore).
 Almeno una transazione(Una in InitialController nella funzione SignUp, 3 in BuyerController nelle funzioni purchaseGame, denyPurchase e deleteAccount).
+Almeno una funzionalità ajax(Fotogallery nella sidebar destra del main).
 
 
 Credenziali di autenticazione e link alla homepage
@@ -26,4 +27,4 @@ Credenziali di autenticazione e link alla homepage
 
 Venditore=>	Username:MauSeller	Password:Pass1
 Un compratore=>	Username:MauBuyer	Password:Pass2		Si possono creare altri account.
-Link Homepage:
+Link Homepage:	http://spano.sc.unica.it/amm2014/pisanoMauro/ProgettoAMM/PHP/index.php

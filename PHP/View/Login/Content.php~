@@ -9,7 +9,7 @@
         default:
 ?>
     
-<p>Benvenuto!Dai un'occhiata ai videogiochi che offriamo.</p>
+<p id="main_p">Benvenuto!Dai un'occhiata ai videogiochi che offriamo.</p>
 <ul class="panel">
     <li><a href="login?subpage=sign_up" id="sign_up">Registrazione</a></li>
     <li><a href="login?subpage=see&genre=all&console=all&limit_index=0" id="see">Visualizza merce</a></li>
