@@ -19,6 +19,8 @@ I compratori possono ricaricare la propria carta ricaricabile aggiungendo quanti
 <br/>
 I venditori possono visualizzare il profilo e i propri giochi, aggiungere un nuovo gioco, oppure eliminarne uno dalla propria lista.
 <br/>
+Per visualizzare le immagini, bisogna salvarle sia nella cartella Images/Boxart, sia nella directory PHP.
+<br/>
 <br/>
 
 

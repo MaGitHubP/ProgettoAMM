@@ -92,6 +92,7 @@
 				if($info=="delete"){
 				    if($request["delete"]){
 					$this->deleteAccount($view, $user);
+					$this->showInitialPage($view);
 				    }else{
 					$this->showHomeUser($view);
 				    }

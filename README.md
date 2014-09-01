@@ -9,6 +9,7 @@ Nella parte alta del sito(l'header) c'è un menù in cui si può accedere alle v
 Quando si è utenti non autenticati, si ha la possibilità di registrare un nuovo account, solo come compratori.Non è possibile registrarsi con un username o codice della carta uguali a quello di un altro utente.
 I compratori possono ricaricare la propria carta ricaricabile aggiungendo quanti soldi vogliono.Per farlo, devono prima digitare il codice della propria carta.Inoltre possono visualizzare il proprio carrello(i giochi che hanno comprato) e il proprio profilo(le varie informazioni possono essere modificate).Per comprare i giochi a disposizione del venditore, bisogna prima digitare il codice della propria carta.Inoltre è possibile farsi rimborsare restituendo i giochi comprati al venditore, selezionando "Elimina acquisto" a fianco ai giochi nel carrello.
 I venditori possono visualizzare il profilo e i propri giochi, aggiungere un nuovo gioco, oppure eliminarne uno dalla propria lista.
+Per visualizzare le immagini, bisogna salvarle sia nella cartella Images/Boxart, sia nella directory PHP.
 
 
 Requisiti soddisfatti

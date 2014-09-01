@@ -235,7 +235,7 @@ body{
 	background-color: #b0c4de;
 	top: 175px;
 	left: 12%;
-	width: 88%;
+	width: 76%;
 	min-height: 800px;
 	z-index: 0;
 }
@@ -323,7 +323,7 @@ body{
 
 .content #boxcontent a#next{
 	position: absolute;
-	right: 30%;
+	right: 20%;
 	font-size: 20px;
 	font-weight: bold;
 }
