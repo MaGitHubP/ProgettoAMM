@@ -58,6 +58,7 @@
                 	switch($request["cmd"]){
                     	case "logout":
                         	$this->logout($view);
+				$game = $gamesList[0];
                         	break;
 			case "modify":
 				$info=$request["info"];

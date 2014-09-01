@@ -246,7 +246,6 @@ body{
 
 .content #boxcontent p#main_p{
 	text-align: center;
-	display: inline;
 }
 
 .content #boxcontent p#info_p{
@@ -324,7 +323,7 @@ body{
 
 .content #boxcontent a#next{
 	position: absolute;
-	right: 1%;
+	right: 30%;
 	font-size: 20px;
 	font-weight: bold;
 }

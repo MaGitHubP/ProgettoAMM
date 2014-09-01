@@ -22,6 +22,7 @@
             $ajaxMode = false;
             
             $view->setPage($request["page"]);
+	    $game = $gamesList[0];
             
 	    //Se l'utente non è loggato, mostra la pagina del login.
 	    if(!$this->isLogged()){

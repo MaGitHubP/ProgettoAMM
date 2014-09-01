@@ -118,18 +118,18 @@
 	    </div>
 
 	    <!--Qui viene posizionata la sidebar destra.-->
-	    <div class="rightbar">
+	   <!-- <div class="rightbar">
 		<h3>Giochi disponibili</h3>
 	
             	<input type ="hidden" value="<?=$game->getId(); ?>" name="id_game" id ="id_game"/>
-		<img id="cover_game" class="cover_game" src="<?= $game->getCover()?>" alt="Cover <?=$game->getTitle(); ?>"/>
+		<img id="cover_game" class="cover_game" src="../Images/Boxart/<?= $game->getCover()?>" alt="Cover <?=$game->getTitle(); ?>"/>
                 <span id="title_game"><?=$game->getTitle(); ?></span>
       
 		
                 <button id="prev_game">Indietro</button>
                 <button id="next_game">Avanti</button>        
 
-	    </div>
+	    </div>-->
 
 	    <!--Qui viene posizionato il content.-->
 	    <div class="content">

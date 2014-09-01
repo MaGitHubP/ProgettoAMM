@@ -26,6 +26,7 @@
 	    
             
             $view->setPage($request["page"]);
+	    $game = $gamesList[0];
 
             if(isset($request["subpage"])){
                 switch($request["subpage"]){
