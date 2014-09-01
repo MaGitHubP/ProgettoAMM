@@ -29,6 +29,10 @@
 
             if(isset($request["subpage"])){
                 switch($request["subpage"]){
+		    case "instruction":
+			$view->setSubPage("instruction");
+			$this->showInitialPage($view);
+			break;
                     case "see":
                         $genre="all";
 			$console="all";

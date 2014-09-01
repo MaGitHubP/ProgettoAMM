@@ -4,7 +4,6 @@
     include_once basename(__DIR__) . '/../Model/UserFactory.php';
     include_once basename(__DIR__) . '/../Model/RBarGames.php';
     include_once basename(__DIR__) . '/../Model/RBarGamesFactory.php';
-    include_once basename(__DIR__) . '/../Settings.php';
     
     /*Questa classe gestisce le pagine "iniziali", cioè quelle in cui 
      *viene richiesto il login.Il metodo handleInput gestisce i vari 
@@ -30,6 +29,9 @@
 
             if(isset($request["subpage"])){
                 switch($request["subpage"]){
+		    case "instruction":
+			$view->setSubPage("instruction");
+			$this->showInitialPage($view);
                     case "see":
                         $genre="all";
 			$console="all";

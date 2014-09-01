@@ -213,18 +213,18 @@ body{
 .rightbar span{
 	position: absolute;
 	top: 30%;
-	left: 20%;
+	left: 15%;
 }
 
 .rightbar button#prev_game{
 	position: absolute;
-	top: 35%;
+	top: 40%;
 	left: 5%;
 }
 
 .rightbar button#next_game{
 	position: absolute;
-	top: 35%;
+	top: 40%;
 	left: 55%;
 }
 
@@ -246,6 +246,12 @@ body{
 
 .content #boxcontent p#main_p{
 	text-align: center;
+	display: inline;
+}
+
+.content #boxcontent p#info_p{
+	text-align: left;
+	display: block;
 }
 
 .content #boxcontent ul.panel{
@@ -403,6 +409,11 @@ body{
 
 .panel li a:active{
 	color: red;
+}
+
+.content #boxcontent li a#instruction{
+	background-image: url('../Images/info.png');
+        background-repeat: no-repeat;
 }
 
 .content #boxcontent li a#sign_up{

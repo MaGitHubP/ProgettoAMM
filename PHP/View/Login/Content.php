@@ -1,5 +1,8 @@
 <?php
     switch($view->getSubPage()){
+	case "instruction":
+	    include_once 'Instruction.php';
+            break;
         case "see":
             include_once 'SeeGames.php';
             break;
@@ -11,6 +14,7 @@
     
 <p id="main_p">Benvenuto!Accedi, registrati o dai un'occhiata ai videogiochi che offriamo.</p>
 <ul class="panel">
+    <li><a href="login?subpage=instruction" id="instruction">Istruzioni</a></li>
     <li><a href="login?subpage=sign_up" id="sign_up">Registrazione</a></li>
     <li><a href="login?subpage=see&genre=all&console=all&limit_index=0" id="see">Visualizza merce</a></li>
 </ul>

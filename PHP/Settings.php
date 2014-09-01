@@ -9,7 +9,7 @@ class Settings {
     public static $db_host = 'localhost';
     public static $db_user = 'pisanoMauro';
     public static $db_password = 'procione966';
-    public static $db_name='giochiammo';
+    public static $db_name='amm14_pisanoMauro';
     
     private static $appPath;
 
@@ -28,7 +28,7 @@ class Settings {
                     break;
                 case 'spano.sc.unica.it':
                     // configurazione pubblica
-                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/amm2014/pisanoMauro/ProgettoAMM/';
+                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/amm2014/pisanoMauro/';
                     break;
 
                 default:

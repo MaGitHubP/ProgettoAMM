@@ -248,6 +248,11 @@ body{
 	text-align: center;
 }
 
+.content #boxcontent p#info_p{
+	text-align: left;
+	display: block;
+}
+
 .content #boxcontent ul.panel{
 	text-align: center;
 }
@@ -403,6 +408,11 @@ body{
 
 .panel li a:active{
 	color: red;
+}
+
+.content #boxcontent li a#instruction{
+	background-image: url('../Images/info.png');
+        background-repeat: no-repeat;
 }
 
 .content #boxcontent li a#sign_up{
