@@ -483,7 +483,7 @@
 		$IDB=$user->getIDB();
 		$credit_card_id=$user->getCreditCard();
 
-		$query="DELETE FROM `giochiammo`.`buyer` WHERE `buyer`.`id` = $IDB";
+		$query="DELETE FROM `amm14_pisanoMauro`.`buyer` WHERE `buyer`.`id` = $IDB";
 		$result=$mysqli->query($query);
 
 		if($mysqli->errno > 0){
@@ -493,7 +493,7 @@
 		    return null;
 		}
 
-		$query="DELETE FROM `giochiammo`.`user` WHERE `user`.`id` = $id";
+		$query="DELETE FROM `amm14_pisanoMauro`.`user` WHERE `user`.`id` = $id";
 		$result=$mysqli->query($query);
 
 		if($mysqli->errno > 0){
@@ -503,7 +503,7 @@
 		    return null;
 		}
 
-		$query="DELETE FROM `giochiammo`.`credit_card` WHERE `credit_card`.`id` = $credit_card_id";
+		$query="DELETE FROM `amm14_pisanoMauro`.`credit_card` WHERE `credit_card`.`id` = $credit_card_id";
 		$result=$mysqli->query($query);
 
 		if($mysqli->errno > 0){
